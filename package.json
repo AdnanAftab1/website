@@ -5,15 +5,15 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "npm run build-scripts && next dev",
-    "build": "npm run build-scripts && next build",
+    "dev": "node init && npm run build-scripts && next dev",
+    "build": "node init && npm run build-scripts && next build",
     "test:e2e": "npx cypress run",
     "test": "jest --passWithNoTests",
-    "build:pages": "tsx scripts/build-pages.ts && npm run format:mdx",
-    "build:posts": "tsx scripts/index.ts",
-    "build-scripts": "npm run build:pages && npm run lint:mdx && npm run build:posts",
+    "build:pages": "node init && tsx scripts/build-pages.ts && npm run format:mdx",
+    "build:posts": "node init && tsx scripts/index.ts",
+    "build-scripts": "node init && npm run build:pages && npm run lint:mdx && npm run build:posts",
     "write:blog": "tsx ./scripts/compose.ts",
-    "start": "npx serve@latest out",
+    "start": "node init && npx serve@latest out",
     "lint": "next lint",
     "lint:fix": "next lint --fix",
     "format:mdx": "prettier --write \"**/*.mdx\"",
@@ -26,8 +26,8 @@
     "test:md": "tsx scripts/markdown/check-markdown.ts",
     "test:editlinks": "tsx scripts/markdown/check-edit-links.ts",
     "test:locales": "tsx scripts/helpers/check-locales.ts",
-    "dev:storybook": "storybook dev -p 6006",
-    "build:storybook": "storybook build"
+    "dev:storybook": "node init && storybook dev -p 6006",
+    "build:storybook": "node init && storybook build"
   },
   "repository": {
     "type": "git",
